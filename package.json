@@ -22,7 +22,7 @@
     "node": "6.9.5"
   },
   "author": "Nikolaos Kontakis",
-  "license": "MIT",
+  "license": "ISC",
   "bugs": {
     "url": "https://github.com/wirednkod/boilerplate-react-baobab-webpack/issues"
   },
