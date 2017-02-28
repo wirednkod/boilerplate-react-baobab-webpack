@@ -12,7 +12,7 @@ class Counter extends Component {
     render() {
         let self = this;
         let count = self.props.lists.length;
-        console.log(count);
+
         return (
             <div>{count}</div>
         );

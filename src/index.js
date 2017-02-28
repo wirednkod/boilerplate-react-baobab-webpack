@@ -1,7 +1,8 @@
 import React from 'react';
-import {render} from 'react-dom';
-import App from './containers/app';
+import ReactDOM from 'react-dom';
+import routes from './routes';
+import { browserHistory } from 'react-router';
 
-const $root = document.getElementById('root');
-
-render(<App />, $root);
+ReactDOM.render(
+    routes(browserHistory), document.getElementById('root')
+);

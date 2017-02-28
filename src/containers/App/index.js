@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import {root} from 'baobab-react/higher-order';
-import tree from '../state';
+import tree from '../../managers/StateManager';
 
-import List from '../components/list.js';
-import Counter from '../components/counter.js';
+import List from '../../components/List';
+import Counter from '../../components/Counter';
 
 class App extends Component {
     render() {
@@ -16,4 +16,4 @@ class App extends Component {
         );
     }
 }
-export default root(App, tree);
+export default root(App, tree.getStore());

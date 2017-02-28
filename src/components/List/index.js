@@ -1,8 +1,8 @@
-'use strict';
-
 import React, {Component} from 'react';
 import PropTypes from 'baobab-react/prop-types';
 import {branch} from 'baobab-react/higher-order';
+
+import styles from './style.css'
 
 class List extends Component {
     constructor(){
@@ -17,9 +17,6 @@ class List extends Component {
 
         let new_list = name.substr(0, name.length - 1) + (parseInt(name.substr(name.length - 1)) + 1);
         self.context.tree.push('lists',new_list);
-
-        // lists.push(new_list);
-        // console.log(lists);
     }
 
     render() {
@@ -33,7 +30,7 @@ class List extends Component {
 
         return (
             <div>
-                <ul>{items.map(renderItem)}</ul>
+                <ul className="${styles.element}">{items.map(renderItem)}</ul>
                 <button onClick={self.addRow}>Press me</button>
             </div>
         );

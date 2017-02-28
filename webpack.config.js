@@ -4,14 +4,14 @@ var path = require('path');
 
 module.exports = {
   entry: [
-    'webpack-dev-server/client?http://localhost:5000',
+    'webpack-dev-server/client?http://localhost:3000',
     'webpack/hot/dev-server',
     './src/index'
   ],
   output: {
     path: __dirname,
-    filename: 'bundle.js',
-    publicPath: '/static/'
+    filename: 'public/bundle.js',
+    publicPath: '/public/'
   },
   resolve: {
     extensions: ['', '.js']
