@@ -3,19 +3,27 @@ const webpack = require('webpack');
 const path = require('path');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
+var cssloaders = [
+    {
+        loader: 'css-loader',
+        options: {
+            modules: true
+        }
+    }];
+
 module.exports = {
     entry: './src/index',
     output: {
-        path: path.join(__dirname, 'dist'),
+        path: path.join(__dirname, 'public'),
         filename: 'bundle.js',
-        publicPath: '/'
+        publicPath: '/public/'
     },
     resolve: {
         extensions: ['.js']
     },
     devtool: 'source-map',
     plugins: [
-        new webpack.optimize.OccurenceOrderPlugin(),
+        new webpack.optimize.OccurrenceOrderPlugin(),
         new webpack.DefinePlugin({
             'process.env': {
                 'NODE_ENV': JSON.stringify('production')
@@ -33,13 +41,14 @@ module.exports = {
             {
                 test: /\.jsx?$/,
                 loaders: 'babel-loader',
-                include: path.join(__dirname, 'src')
+                include: path.join(__dirname, 'src'),
+                exclude: /node_modules/
             },
             {
                 test: /\.css$/,
                 loader: ExtractTextPlugin.extract({
                     fallback: 'style-loader',
-                    use: "css-loader"
+                    use: cssloaders
                 })
             }
         ]

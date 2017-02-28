@@ -3,6 +3,14 @@ const webpack = require('webpack');
 const path = require('path');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
+var cssloaders = [
+    {
+        loader: 'css-loader',
+        options: {
+            modules: true
+        }
+    }];
+
 module.exports = {
     entry: [
         'webpack-dev-server/client?http://localhost:3000',
@@ -10,8 +18,8 @@ module.exports = {
         './src/index'
     ],
     output: {
-        path: __dirname,
-        filename: 'public/bundle.js',
+        path: path.join(__dirname, 'public'),
+        filename: 'bundle.js',
         publicPath: '/public/'
     },
     resolve: {
@@ -28,12 +36,13 @@ module.exports = {
             {
                 test: /\.jsx?$/,
                 loaders: 'babel-loader',
+                exclude: /node_modules/
             },
             {
                 test: /\.css$/,
                 loader: ExtractTextPlugin.extract({
                     fallback: 'style-loader',
-                    use: "css-loader"
+                    use: cssloaders
                 })
             }
         ]
