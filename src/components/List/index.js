@@ -30,7 +30,7 @@ class List extends Component {
 
         return (
             <div>
-                <ul className="${styles.element}">{items.map(renderItem)}</ul>
+                <ul>{items.map(renderItem)}</ul>
                 <button onClick={self.addRow}>Press me</button>
             </div>
         );
