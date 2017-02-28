@@ -29,7 +29,7 @@ class List extends Component {
         console.log(styles.element);
         function renderItem(item) {
             i++;
-            return <li key={"key_" + i}>{item}</li>;
+            return <li className={styles.lielement} key={"key_" + i}>{item}</li>;
         }
 
         return (
