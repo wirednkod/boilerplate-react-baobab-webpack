@@ -1,2 +1,2 @@
 # boilerplate-react-baobab-webpack
-Boilerplate including react, es7, babel, webpack, baobab
+Boilerplate including react, es6, babel (w latest), webpack, baobab
