@@ -11,6 +11,28 @@ var cssloaders = [
         }
     }];
 
+
+var resolve_options = {
+  extensions: ['.js'],
+  alias: {
+    components: path.resolve(__dirname,'src/components/'),
+    containers: path.resolve(__dirname,'src/containers/'),
+    consts: path.resolve(__dirname,'src/consts/'),
+    managers: path.resolve(__dirname,'src/managers/'),
+    common_actions: path.resolve(__dirname,'src/common_actions/')
+  }
+};
+
+var env_client = {
+  "IS_BROWSER": JSON.stringify(true),
+  "ROOT_DIR": JSON.stringify(__dirname)
+}
+
+var env_server = {
+  "IS_BROWSER": JSON.stringify(false),
+  "ROOT_DIR": JSON.stringify(__dirname)
+}
+
 module.exports = {
     entry: './src/index',
     output: {
@@ -18,9 +40,7 @@ module.exports = {
         filename: 'bundle.js',
         publicPath: '/public/'
     },
-    resolve: {
-        extensions: ['.js']
-    },
+    resolve: resolve_options,
     devtool: 'source-map',
     plugins: [
         new webpack.optimize.OccurrenceOrderPlugin(),
@@ -34,7 +54,8 @@ module.exports = {
             compress: {
                 warnings: false
             }
-        })
+        }),
+        new webpack.DefinePlugin(env_client),
     ],
     module: {
         rules: [

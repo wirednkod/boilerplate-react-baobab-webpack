@@ -2,12 +2,9 @@
 
 import React, {Component} from 'react';
 import {root} from 'baobab-react/higher-order';
-import tree from '../../managers/StateManager';
+import { List, Counter } from 'components';
 
-import List from '../../components/List';
-import Counter from '../../components/Counter';
-
-class App extends Component {
+class Layout1 extends Component {
     render() {
         return (
             <div>
@@ -18,4 +15,4 @@ class App extends Component {
         );
     }
 }
-export default root(App, tree.getStore());
+export default Layout1;

@@ -1,15 +1,31 @@
-/* eslint-disable no-var, strict */
-const webpack = require('webpack');
-const WebpackDevServer = require('webpack-dev-server');
-const config = require('./webpack.config');
+'use strict';
 
-new WebpackDevServer(webpack(config), {
-  publicPath: config.output.publicPath,
-  hot: true,
-  historyApiFallback: true
-}).listen(3000, 'localhost', function (err) {
-    if (err) {
-      console.log(err);
+const Hapi = require('hapi');
+const config = require('./config');
+const server = new Hapi.Server();
+server.connection({ port: 3001, host: 'localhost' });
+
+server.route({
+    method: 'GET',
+    path: config.srv_prefix,
+    handler: function (request, response) {
+        response('Hello, world!');
     }
-    console.log('Listening at localhost:3000');
-  });
+});
+
+server.route({
+    method: 'GET',
+    path: config.srv_prefix + 'caller/{name}',
+    handler: function (request, response) {
+        console.log('!!!!!', request.params);
+        response();
+    }
+});
+
+server.start((err) => {
+
+    if (err) {
+        throw err;
+    }
+    console.log('Server running at: ' + config.srv_host +':' + config.srv_port);
+});

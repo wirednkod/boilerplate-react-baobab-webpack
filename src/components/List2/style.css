@@ -1,0 +1,13 @@
+.element {
+    background-color: blue;
+    color: white;
+    font-size: 12px;
+    padding: 20px;
+}
+
+.lielement {
+    background-color: hotpink;
+    color: white;
+    font-size: 12px;
+    padding: 2px;
+}

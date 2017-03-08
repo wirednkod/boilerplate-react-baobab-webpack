@@ -4,7 +4,9 @@
   "description": "Yet another boilerplate for react, es6, baobab, webpack",
   "main": "index.js",
   "scripts": {
-    "start": "node server.js",
+    "start": "npm run server | npm run client",
+    "server": "node server.js",
+    "client": "node client.js",
     "build": "webpack --config webpack.config.production.js",
     "lint": "./node_modules/.bin/eslint ."
   },
@@ -44,6 +46,7 @@
     "eslint": "^3.16.1",
     "eslint-plugin-react": "^6.10.0",
     "extract-text-webpack-plugin": "^2.0.0",
+    "hapi": "^16.1.0",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-router": "^3.0.2",

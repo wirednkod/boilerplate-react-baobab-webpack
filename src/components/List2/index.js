@@ -17,11 +17,11 @@ class List extends Component {
 
     addRow() {
         let self = this;
-        let lists = self.props.lists;
-        let name = lists[lists.length - 1];
+        let lists2 = self.props.lists2;
+        let name = lists2[lists2.length - 1];
 
         let new_list = name.substr(0, name.length - 1) + (parseInt(name.substr(name.length - 1)) + 1);
-        self.context.tree.push('lists', new_list);
+        self.context.tree.push('lists2', new_list);
     }
 
     callFunc(){
@@ -32,7 +32,7 @@ class List extends Component {
 
     render() {
         let self = this;
-        let items = self.props.lists;
+        let items = self.props.lists2;
         let i = 0;
 
         function renderItem(item) {
@@ -57,6 +57,6 @@ List.contextTypes = {
 
 export default branch(List, {
     cursors: {
-        lists: ['lists']
+        lists2: ['lists2']
     }
 });

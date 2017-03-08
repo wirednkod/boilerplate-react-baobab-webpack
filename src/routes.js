@@ -2,14 +2,17 @@
 
 import React from 'react';
 import { Router, Route, IndexRoute } from 'react-router';
-
-import App from './containers/App/index';
+import { MainLayout, Layout1, Layout2 } from 'containers';
+import { Error404 } from 'components';
 
 export default function(history) {
     return (
         <Router history={history}>
-            <Route path='/' component={App}>
-                {/*<Route path='*' component={Error404}/>*/}
+            <Route path="/" component={MainLayout} >
+                <IndexRoute component={MainLayout} />
+                <Route path="app" component={Layout1} />
+                <Route path="app2" component={Layout2} />
+                <Route path='*' component={Error404} />
             </Route>
         </Router>
     );
