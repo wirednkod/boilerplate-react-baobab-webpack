@@ -21,7 +21,7 @@
   "engines": {
     "node": "6.9.5"
   },
-  "author": "Nikolaos Kontakis",
+  "author": "Nikolaos Kontakis (wirednkod)",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/wirednkod/boilerplate-react-baobab-webpack/issues"
