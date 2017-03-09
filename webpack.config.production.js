@@ -1,9 +1,11 @@
 /* eslint-disable no-var */
+'use strict';
+
 const webpack = require('webpack');
 const path = require('path');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
-var cssloaders = [
+const cssloaders = [
     {
         loader: 'css-loader',
         options: {
@@ -11,24 +13,23 @@ var cssloaders = [
         }
     }];
 
-
-var resolve_options = {
-  extensions: ['.js'],
-  alias: {
-    components: path.resolve(__dirname,'src/components/'),
-    containers: path.resolve(__dirname,'src/containers/'),
-    consts: path.resolve(__dirname,'src/consts/'),
-    managers: path.resolve(__dirname,'src/managers/'),
-    common_actions: path.resolve(__dirname,'src/common_actions/')
-  }
+const resolve_options = {
+    extensions: ['.js'],
+    alias: {
+        'components': path.join(__dirname,'src','components'),
+        'containers': path.join(__dirname,'src','containers'),
+        'consts': path.join(__dirname,'src','consts'),
+        'managers': path.join(__dirname,'src','managers'),
+        'common_actions': path.join(__dirname,'src','common_actions')
+    }
 };
 
-var env_client = {
+const env_client = {
   "IS_BROWSER": JSON.stringify(true),
   "ROOT_DIR": JSON.stringify(__dirname)
 }
 
-var env_server = {
+const env_server = {
   "IS_BROWSER": JSON.stringify(false),
   "ROOT_DIR": JSON.stringify(__dirname)
 }
