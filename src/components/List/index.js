@@ -1,10 +1,11 @@
 'use strict';
 
 import React, {Component} from 'react';
-import PropTypes from 'baobab-react/prop-types';
 import {branch} from 'baobab-react/higher-order';
-
+import PropTypes from 'baobab-react/prop-types';
 import Common_Actions from 'common_actions/Common_Actions';
+
+import { Link } from 'react-router';
 
 import styles from './style.css';
 
@@ -43,9 +44,10 @@ class List extends Component {
         return (
             <div>
                 <ul className={styles.element}>{items.map(renderItem)}</ul><br />
-                Normal button: <button onClick={self.addRow}>Press me</button><br />
-                Simple a href: <a href="/app2">Take me to</a><br />
-                Normal button: <button onClick={self.callFunc}>Take me to...</button>
+                Normal button: <button onClick={self.addRow}>Add items</button><br />
+                Simple a href (not Link): <a href="/app2">Href me to app2</a><br />
+                React Router Link: <Link to="/app2">Link me to app2</Link><br />
+                Normal button with function: <button onClick={self.callFunc}>Take me to...</button>
             </div>
         );
     }

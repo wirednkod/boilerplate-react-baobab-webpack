@@ -8,7 +8,7 @@ class Layout1 extends Component {
     render() {
         return (
             <div>
-                <Counter />
+                <Counter who="list" />
                  Here you can add whatever div/component etc...
                 <List />
             </div>

@@ -1,0 +1,13 @@
+.counter1 {
+    background-color: #000;
+    color: #fff;
+    font-size: 12px;
+    padding: 2px;
+}
+
+.counter2 {
+    background-color: #fff;
+    color: #000;
+    font-size: 12px;
+    padding: 2px;
+}

@@ -9,11 +9,9 @@ export default class Common_actions {
 
     static callMe( params) {
         return new Promise(function (resolve, reject) {
+            console.log('called - common actions');
             request
-                .get('http://' +
-                    config.srv_host + ':' +
-                    config.srv_host + '/' +
-                    config.srv_prefix + '/caller/' + params.name)
+                .get('http://localhost:3001/srv/caller/' + params.name)
                 .end(function () {
                     return resolve();
                 });
