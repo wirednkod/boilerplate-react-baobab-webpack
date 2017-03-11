@@ -2,13 +2,20 @@
 
 import React, {Component} from 'react';
 import {root} from 'baobab-react/higher-order';
-import { List, Counter } from 'components';
 import {branch} from 'baobab-react/higher-order';
 import CSSModules from 'react-css-modules';
+
+import { List, Counter } from 'components';
+
+import List from '../../components/List/index'
 
 import styles from './style.css';
 
 class Layout1 extends Component {
+    constructor(props){
+        super(props);
+    }
+
     render() {
         let self = this;
         return (
