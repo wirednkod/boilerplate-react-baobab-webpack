@@ -7,8 +7,6 @@ import CSSModules from 'react-css-modules';
 
 import { List, Counter } from 'components';
 
-import List from '../../components/List/index'
-
 import styles from './style.css';
 
 class Layout1 extends Component {
