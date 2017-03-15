@@ -4,7 +4,6 @@ import React, {Component} from 'react';
 import {root} from 'baobab-react/higher-order';
 import { List2, Counter } from 'components';
 import {branch} from 'baobab-react/higher-order';
-import CSSModules from 'react-css-modules';
 
 class Layout2 extends Component {
     render() {

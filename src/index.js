@@ -3,8 +3,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import routes from './routes';
-import { browserHistory } from 'react-router';
+import { hashHistory } from 'react-router';
 
 ReactDOM.render(
-    routes(browserHistory), document.getElementById('root')
+    routes(hashHistory), document.getElementById('root')
 );

@@ -18,7 +18,7 @@ class Counter extends Component {
 
         return (
             <h4 styleName={self.props.styleSet}>
-                Awesome counter: {count}
+                Awesome counterssssszz: {count}
             </h4>
         );
     }

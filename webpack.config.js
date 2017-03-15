@@ -80,7 +80,6 @@ const config_client = {
     bail: config.bail,
     devtool: config.devtool,
     entry: [
-        'webpack-dev-server/client?http://localhost:3000',
         'webpack/hot/dev-server',
         './src/index'
     ],
@@ -88,11 +87,10 @@ const config_client = {
         path: path.join(__dirname, 'public'),
         filename: 'bundle.js',
         publicPath: '/public/',
-        // noInfo: true,
     },
     resolve: resolve_options,
     plugins: [
-        new webpack.HotModuleReplacementPlugin(),
+        new webpack.HotModuleReplacementPlugin({ quiet: true }),
         new webpack.NoEmitOnErrorsPlugin(),
         new ExtractTextPlugin({
             filename: 'bundle.css',
@@ -112,12 +110,14 @@ const config_server = {
     name: "serverside",
     bail: config.bail,
     devtool: config.devtool,
-    entry: "./server.js",
+    entry: [
+        'webpack/hot/poll',
+        './server.js'
+    ],
     output: {
         path: path.join(__dirname, "public"),
         filename: 'server_bundle.js',
         publicPath: '/public/',
-        // noInfo: true
     },
     target: "node",
     resolve: resolve_options,
