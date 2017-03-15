@@ -1,9 +1,7 @@
 'use strict';
 
 import request from 'superagent';
-// let request = require('superagent');
 const config = __dirname + 'config.js';
-// let config = require(ROOT_DIR + '/config.js');
 
 export default class Common_actions {
 
@@ -11,9 +9,10 @@ export default class Common_actions {
         return new Promise(function (resolve, reject) {
             console.log('called - common actions');
             request
-                .get('http://localhost:3001/srv/caller/' + params.name)
+                .get('http://'+ config.srv_host +':'+ config.srv_port +'/srv/caller/' + params.name)
                 .end(function () {
-                    return resolve();
+                    console.log('Helloooo.... it\'s me...');
+                    return resolve('Helloooo.... it\'s me...');
                 });
         });
     }
