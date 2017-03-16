@@ -13,7 +13,7 @@ npm i
 
 For clean start of project:
 ```
-npm run clean       #deletes existing /public/ files and rebuilds the project
+npm run clean 
 ```
 
 For developing on the server side which:
