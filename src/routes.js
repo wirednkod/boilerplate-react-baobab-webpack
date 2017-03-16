@@ -2,8 +2,7 @@
 
 import React from 'react';
 import { Router, Route, IndexRoute } from 'react-router';
-import { MainLayout, Layout1, Layout2 } from 'containers';
-import { Error404, Home } from 'components';
+import { MainLayout, Layout1, Layout2, Error404, Home } from 'containers';
 
 export default function(history) {
     return (

@@ -27,21 +27,10 @@ const config = {
 }
 
 const server_loaders = [{
-    test: /\.jsx?$/,
-    use: [
-        'babel-loader',
-    ]
-},
-    {
-        test: /\.css$/,
+        test: /\.jsx?$/,
         use: [
-            'style-loader',
-            'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
-            {
-                loader: 'postcss-loader',
-                options: { plugins: ()=> { return [autoprefixer] } }
-            }
-        ],
+            'babel-loader',
+        ]
     }
 ];
 
@@ -54,14 +43,15 @@ const common_loaders = [{
                         },
                         {
                             test: /\.css$/,
-                            use: [
-                                'style-loader',
-                                'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
-                                {
-                                    loader: 'postcss-loader',
-                                    options: { plugins: ()=> { return [autoprefixer] } }
-                                }
-                            ],
+                            loader: ExtractTextPlugin.extract({
+                                fallback: 'style-loader',
+                                use: [{
+                                        loader: 'css-loader',
+                                        options: {
+                                            modules: true
+                                        }
+                                    }]
+                            })
                         }
                     ];
 

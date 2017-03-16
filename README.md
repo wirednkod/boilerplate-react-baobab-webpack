@@ -12,12 +12,13 @@ npm i
 ```
 
 For dev purposes open 2 different terminals.
-On first run:
+On first terminal execute the following:
 ```
-  npm run dev       # this will start the server in dev mode with hot reload for server side changes
+  webpack           # only once in order to create the bundles - hotreload will take care of rest.
+  webpack -w        # this will force webpack to watch changes for client side
 ```
 
-On second run:
+On second terminal run:
 ```
-  webpack -w        # this will force webpack to watch changes
+  npm run dev       # this will start the server in dev mode with hot reload for server side changes
 ```
