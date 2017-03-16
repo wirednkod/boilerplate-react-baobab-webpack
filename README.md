@@ -11,14 +11,20 @@ npm i nodemon -g
 npm i
 ```
 
-For dev purposes open 2 different terminals.
-On first terminal execute the following:
+For clean start of project:
 ```
-  webpack           # only once in order to create the bundles - hotreload will take care of rest.
-  webpack -w        # this will force webpack to watch changes for client side
+npm run clean       #deletes existing /public/ files and rebuilds the project
 ```
 
-On second terminal run:
+For developing on the server side which:
+a) Starts the server with watch and on changes server restarts, applying the changes.
+b) Starts the client with watch but when changing something on react, you must refresh the browser to see it.
 ```
-  npm run dev       # this will start the server in dev mode with hot reload for server side changes
+npm run start
+```
+
+For developing on the client/react side which:
+a) Starts the server with watch and client with watch. When changing something on react, browser and server refresh automatically.
+```
+npm run start:client
 ```
