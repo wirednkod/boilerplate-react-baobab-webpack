@@ -2,9 +2,9 @@
 
 import React, {Component} from 'react';
 import CSSMod from 'react-css-modules';
-import { LButton } from 'components';
+import { LButton, FieldGroup } from 'components';
 import { ButtonGroup, ButtonToolbar, Button, DropdownButton, MenuItem, Breadcrumb, Tabs, Tab, Radio, Table} from 'react-bootstrap';
-import { FormControl, FormGroup, Checkbox, ControlLabel } from 'react-bootstrap';
+import { Form, FormControl, FormGroup, Checkbox, ControlLabel } from 'react-bootstrap';
 
 import styles from './style.less';
 
@@ -146,6 +146,29 @@ class Home extends Component {
                 </div>
                 <div className="contain">
                     <form>
+                        <FieldGroup
+                            id="formControlsText"
+                            type="text"
+                            label="Text"
+                            placeholder="Enter text"
+                        />
+                        <FieldGroup
+                            id="formControlsEmail"
+                            type="email"
+                            label="Email address"
+                            placeholder="Enter email"
+                        />
+                        <FieldGroup
+                            id="formControlsPassword"
+                            label="Password"
+                            type="password"
+                        />
+                        <FieldGroup
+                            id="formControlsFile"
+                            type="file"
+                            label="File"
+                            help="Example block-level help text here."
+                        />
                         <Checkbox checked readOnly>
                             Checkbox
                         </Checkbox>
@@ -212,7 +235,25 @@ class Home extends Component {
                         </Button>
                     </form>
                 </div>
-                <div className="contain"></div>
+                <div className="contain">
+                    <Form inline>
+                        <FormGroup controlId="formInlineName">
+                            <ControlLabel>Name</ControlLabel>
+                            {' '}
+                            <FormControl type="text" placeholder="Jane Doe" />
+                        </FormGroup>
+                        {' '}
+                        <FormGroup controlId="formInlineEmail">
+                            <ControlLabel>Email</ControlLabel>
+                            {' '}
+                            <FormControl type="email" placeholder="jane.doe@example.com" />
+                        </FormGroup>
+                        {' '}
+                        <Button type="submit">
+                            Send invitation
+                        </Button>
+                    </Form>
+                </div>
                 <div className="contain"></div>
                 <div className="contain"></div>
                 <div className="contain"></div>
