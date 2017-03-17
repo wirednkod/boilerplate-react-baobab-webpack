@@ -34,26 +34,34 @@ const server_loaders = [{
     }
 ];
 
-const common_loaders = [{
-                            test: /\.jsx?$/,
-                            use: [
-                                'babel-loader',
-                            ],
-                            exclude: /node_modules/
-                        },
-                        {
-                            test: /\.css$/,
-                            loader: ExtractTextPlugin.extract({
-                                fallback: 'style-loader',
-                                use: [{
-                                        loader: 'css-loader',
-                                        options: {
-                                            modules: true
-                                        }
-                                    }]
-                            })
-                        }
-                    ];
+const common_loaders = [
+    {
+        test: /\.jsx?$/,
+        use: [
+            'babel-loader',
+        ],
+        exclude: /node_modules/
+    },
+    {
+        test: /\.css$/,
+        loader: ExtractTextPlugin.extract({
+            fallback: 'style-loader',
+            use: [{
+                    loader: 'css-loader',
+                    options: {
+                        modules: true
+                    }
+                }]
+        })
+    },
+    {
+        test: /\.less$/,
+        use: ExtractTextPlugin.extract({
+            fallback: 'style-loader',
+            use: ['css-loader', 'less-loader']
+        })
+    }
+];
 
 const env_client = {
   "IS_BROWSER": JSON.stringify(true),
