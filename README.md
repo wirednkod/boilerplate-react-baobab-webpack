@@ -13,7 +13,7 @@ npm i
 
 For clean start of project:
 ```
-npm run clean 
+npm run clean
 ```
 
 For developing on the server side which:
