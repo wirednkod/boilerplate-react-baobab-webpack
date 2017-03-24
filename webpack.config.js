@@ -54,11 +54,7 @@ const common_loaders = [
         loader: ExtractTextPlugin.extract({
             fallback: 'style-loader',
             use: [{
-<<<<<<< HEAD
                     loader: 'css-loader',
-=======
-                    loader: 'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
->>>>>>> e80257bb98277db730ee6e03ae1c6e27acf98579
                     options: {
                         modules: true
                     }
@@ -66,29 +62,11 @@ const common_loaders = [
         })
     },
     {
-<<<<<<< HEAD
         test: /\.less$/,
         use: ExtractTextPlugin.extract({
             fallback: 'style-loader',
             use: ['css-loader', 'less-loader']
         })
-=======
-        test: /\.scss$/,
-        use: [
-            {
-                loader: "style-loader"
-            },
-            {
-                loader: "css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]"
-            },
-            {
-                loader: "postcss-loader"
-            },
-            {
-                loader: "sass-loader"
-            }
-        ]
->>>>>>> e80257bb98277db730ee6e03ae1c6e27acf98579
     }
 ];
 

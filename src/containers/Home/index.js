@@ -6,7 +6,7 @@ import { LButton, LTable, FieldGroup } from 'components';
 import { ButtonGroup, ButtonToolbar, Button, DropdownButton, MenuItem, Breadcrumb, Tabs, Tab, Radio, Table} from 'react-bootstrap';
 import { Form, FormControl, FormGroup, Checkbox, ControlLabel } from 'react-bootstrap';
 
-import styles from './style.scss';
+import styles from './style.less';
 
 class Home extends Component {
     constructor(props){
