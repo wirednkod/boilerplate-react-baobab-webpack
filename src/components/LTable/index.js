@@ -10,12 +10,21 @@ class LTable extends Component {
         super(props);
         let self = this;
         self.state = {
-            // currentSort: { column: constr_column, direction: constr_direction },
-            // rowValues : { colVal: null, sortVal: null },
-            data: self.props.data,
-            // defData: self.props.data,
-            // paging: { page: 0, per_page: paging},
+            data: props.data,
+            hasHeader: props.hasHeader,
+            textHeader: (props.hasHeader) ? 'Hide' : 'Show'
         };
+
+        self.headerAlter = self.headerAlter.bind(self);
+    }
+
+    headerAlter(){
+        let self = this;
+
+        self.setState({
+            hasHeader: !self.state.hasHeader,
+            textHeader: (!self.state.hasHeader) ? 'Hide' : 'Show'
+        });
     }
 
     render() {
@@ -24,28 +33,35 @@ class LTable extends Component {
         let tbody = [];
         let thead = [];
         let table = [];
+        let width;
         let tr = [];
+        let hasHeader = self.state.hasHeader || false;
         let i=0;
+
+        for(let rows in data) { width = (Object.keys(data[rows]).length >0) ? 100/Object.keys(data[rows]).length : 0; }
+
         for(let rows in data) {
             let td = [];
-            console.log(Object.keys(data[rows]), Object.keys(data[rows]).length);
-            let width = (Object.keys(data[rows]).length >0) ? 100/Object.keys(data[rows]).length : 0;
-            for (let col in data[rows]) {
-                if (self.props.hasHeader && i == 0) {
-                    console.log('it has header');
-                    td.push(<div className="headerRow" style={{width: width +'%'}}>{data[rows][col]}</div>);
-                } else {
-                    console.log(data[rows][col]);
-                    td.push(<div className="bodyRow" style={{width:width +'%'}}>{data[rows][col]}</div>);
-                }
+            let styleName = 'bodyRow';
+
+            if (hasHeader && i==0) {
+                styleName='headerRow';
+            }else if (!hasHeader && i==0){
+                i++;
+                continue;
             }
-            tr.push(<div className="row">{td}</div>);
+            for (let col in data[rows]) {
+                td.push(<div key={data[rows][col] + "_"+ i } className={styleName} style={{width:width +'%'}}>{data[rows][col]}</div>);
+            }
+            tr.push(<div key={"row_"+ data[rows] + "_"+ i }className="row">{td}</div>);
             i++;
         }
-        console.log(tr);
 
         return (
-            <div>{tr}</div>
+            <div>
+                <button onClick={self.headerAlter}>{self.state.textHeader} header</button>
+                <div>{tr}</div>
+            </div>
         );
     }
 }
