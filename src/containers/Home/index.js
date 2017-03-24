@@ -2,7 +2,7 @@
 
 import React, {Component} from 'react';
 import CSSMod from 'react-css-modules';
-import { LButton, FieldGroup } from 'components';
+import { LButton, LTable, FieldGroup } from 'components';
 import { ButtonGroup, ButtonToolbar, Button, DropdownButton, MenuItem, Breadcrumb, Tabs, Tab, Radio, Table} from 'react-bootstrap';
 import { Form, FormControl, FormGroup, Checkbox, ControlLabel } from 'react-bootstrap';
 
@@ -17,6 +17,17 @@ class Home extends Component {
         console.log(styles);
 
         let self = this;
+
+        let data = {
+            'row1': ['head1', 'head2', 'head3', 'head4', 'head5'],
+            'row2': ['1col1', '1col2', '1col3', '1col4', '1col5'],
+            'row3': ['2col1', '2col2', '2col3', '2col4', '2col5'],
+            'row4': ['3col1', '3col2', '3col3', '3col4', '3col5'],
+            'row5': ['3col1', '3col2', '3col3', '3col4', '3col5'],
+            'row6': ['3col1', '3col2', '3col3', '3col4', '3col5'],
+            'row7': ['3col1', '3col2', '3col3', '3col4', '3col5'],
+        };
+
         return (
             <div className="container">
                 <h1>Demo Page</h1>
@@ -24,6 +35,12 @@ class Home extends Component {
                 <div className="contain">
                     <LButton txt="Text of the button" />
                 </div>
+
+                <div className="contain">
+                    <LTable data={data} hasHeader/>
+                </div>
+
+
                 <div className="contain">
                     <ButtonToolbar>
                         <Button>Default</Button>
