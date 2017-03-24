@@ -2,15 +2,9 @@
 
 import React, {Component} from 'react';
 import CSSMod from 'react-css-modules';
-<<<<<<< HEAD
 import { LButton, LTable, FieldGroup } from 'components';
 import { ButtonGroup, ButtonToolbar, Button, DropdownButton, MenuItem, Breadcrumb, Tabs, Tab, Radio, Table} from 'react-bootstrap';
 import { Form, FormControl, FormGroup, Checkbox, ControlLabel } from 'react-bootstrap';
-
-import styles from './style.less';
-=======
-import { LButton } from 'components';
->>>>>>> e80257bb98277db730ee6e03ae1c6e27acf98579
 
 import styles from './style.scss';
 
@@ -20,7 +14,6 @@ class Home extends Component {
     }
 
     render() {
-<<<<<<< HEAD
         console.log(styles);
 
         let self = this;
@@ -286,17 +279,3 @@ class Home extends Component {
     }
 }
 export default CSSMod(Home, styles);
-=======
-
-        console.log(styles);
-        return (
-			<div>
-				<h1>Demo Page</h1>
-				<p styleName="test">This is a demo page that will list all components.</p>
-                <LButton txt="Text of the button" />
-			</div>
-        );
-    }
-}
-export default CSSMod(Home, styles);
->>>>>>> e80257bb98277db730ee6e03ae1c6e27acf98579
