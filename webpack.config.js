@@ -6,6 +6,13 @@ const path = require('path');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const autoprefixer = require('autoprefixer');
 
+const bourbon_paths = require('node-neat').includePaths
+const neat_paths = require('node-bourbon').includePaths
+const scssIncludePaths = bourbon_paths.concat(neat_paths);
+
+const postCSS = [ autoprefixer({ browsers: ["> 1%", "last 2 versions"] }) ];
+
+
 const resolve_options = {
     extensions: ['.js'],
     alias: {
@@ -34,26 +41,44 @@ const server_loaders = [{
     }
 ];
 
-const common_loaders = [{
-                            test: /\.jsx?$/,
-                            use: [
-                                'babel-loader',
-                            ],
-                            exclude: /node_modules/
-                        },
-                        {
-                            test: /\.css$/,
-                            loader: ExtractTextPlugin.extract({
-                                fallback: 'style-loader',
-                                use: [{
-                                        loader: 'css-loader',
-                                        options: {
-                                            modules: true
-                                        }
-                                    }]
-                            })
-                        }
-                    ];
+const common_loaders = [
+    {
+        test: /\.jsx?$/,
+        use: [
+            'babel-loader',
+        ],
+        exclude: /node_modules/
+    },
+    {
+        test: /\.css$/,
+        loader: ExtractTextPlugin.extract({
+            fallback: 'style-loader',
+            use: [{
+                    loader: 'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
+                    options: {
+                        modules: true
+                    }
+                }]
+        })
+    },
+    {
+        test: /\.scss$/,
+        use: [
+            {
+                loader: "style-loader"
+            },
+            {
+                loader: "css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]"
+            },
+            {
+                loader: "postcss-loader"
+            },
+            {
+                loader: "sass-loader"
+            }
+        ]
+    }
+];
 
 const env_client = {
   "IS_BROWSER": JSON.stringify(true),
@@ -89,6 +114,18 @@ const config_client = {
         new webpack.DefinePlugin(env_client),
         new webpack.LoaderOptionsPlugin({
             debug: config.debug
+        }),
+        new webpack.LoaderOptionsPlugin({
+            test: /\.scss$/,
+            minimize: false,
+            debug: false,
+            options: {
+                postcss: postCSS,
+                sassLoader: {
+                    // data: '@import "theme/_config.scss";',
+                    includePaths: scssIncludePaths
+                }
+            }
         })
     ],
     module: {

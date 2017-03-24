@@ -5,6 +5,10 @@ const webpack = require('webpack');
 const path = require('path');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
+const extractSass = new ExtractTextPlugin({
+    filename: "[name].[contenthash].css"
+});
+
 const cssloaders = [
     {
         loader: 'css-loader',
@@ -57,6 +61,7 @@ module.exports = {
             }
         }),
         new webpack.DefinePlugin(env_client),
+        extractSass
     ],
     module: {
         rules: [
@@ -71,6 +76,26 @@ module.exports = {
                 loader: ExtractTextPlugin.extract({
                     fallback: 'style-loader',
                     use: cssloaders
+                })
+            },
+            {
+                test: /\.scss$/,
+                loader: ExtractTextPlugin.extract({
+                    fallback: "style-loader",
+                    use: [
+                        {
+                            loader: "style-loader"
+                        },
+                        {
+                            loader: "css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]"
+                        },
+                        {
+                            loader: "postcss-loader"
+                        },
+                        {
+                            loader: "sass-loader"
+                        }
+                    ]
                 })
             }
         ]
