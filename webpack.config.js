@@ -6,6 +6,13 @@ const path = require('path');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const autoprefixer = require('autoprefixer');
 
+const bourbon_paths = require('node-neat').includePaths
+const neat_paths = require('node-bourbon').includePaths
+const scssIncludePaths = bourbon_paths.concat(neat_paths);
+
+const postCSS = [ autoprefixer({ browsers: ["> 1%", "last 2 versions"] }) ];
+
+
 const resolve_options = {
     extensions: ['.js'],
     alias: {
@@ -47,7 +54,11 @@ const common_loaders = [
         loader: ExtractTextPlugin.extract({
             fallback: 'style-loader',
             use: [{
+<<<<<<< HEAD
                     loader: 'css-loader',
+=======
+                    loader: 'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
+>>>>>>> e80257bb98277db730ee6e03ae1c6e27acf98579
                     options: {
                         modules: true
                     }
@@ -55,11 +66,29 @@ const common_loaders = [
         })
     },
     {
+<<<<<<< HEAD
         test: /\.less$/,
         use: ExtractTextPlugin.extract({
             fallback: 'style-loader',
             use: ['css-loader', 'less-loader']
         })
+=======
+        test: /\.scss$/,
+        use: [
+            {
+                loader: "style-loader"
+            },
+            {
+                loader: "css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]"
+            },
+            {
+                loader: "postcss-loader"
+            },
+            {
+                loader: "sass-loader"
+            }
+        ]
+>>>>>>> e80257bb98277db730ee6e03ae1c6e27acf98579
     }
 ];
 
@@ -97,6 +126,18 @@ const config_client = {
         new webpack.DefinePlugin(env_client),
         new webpack.LoaderOptionsPlugin({
             debug: config.debug
+        }),
+        new webpack.LoaderOptionsPlugin({
+            test: /\.scss$/,
+            minimize: false,
+            debug: false,
+            options: {
+                postcss: postCSS,
+                sassLoader: {
+                    // data: '@import "theme/_config.scss";',
+                    includePaths: scssIncludePaths
+                }
+            }
         })
     ],
     module: {
