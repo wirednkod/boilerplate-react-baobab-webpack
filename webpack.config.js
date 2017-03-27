@@ -6,10 +6,6 @@ const path = require('path');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const autoprefixer = require('autoprefixer');
 
-const bourbon_paths = require('node-neat').includePaths
-const neat_paths = require('node-bourbon').includePaths
-const scssIncludePaths = bourbon_paths.concat(neat_paths);
-
 const postCSS = [ autoprefixer({ browsers: ["> 1%", "last 2 versions"] }) ];
 
 
@@ -104,18 +100,6 @@ const config_client = {
         new webpack.DefinePlugin(env_client),
         new webpack.LoaderOptionsPlugin({
             debug: config.debug
-        }),
-        new webpack.LoaderOptionsPlugin({
-            test: /\.scss$/,
-            minimize: false,
-            debug: false,
-            options: {
-                postcss: postCSS,
-                sassLoader: {
-                    // data: '@import "theme/_config.scss";',
-                    includePaths: scssIncludePaths
-                }
-            }
         })
     ],
     module: {
