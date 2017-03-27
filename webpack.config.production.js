@@ -4,6 +4,13 @@
 const webpack = require('webpack');
 const path = require('path');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const autoprefixer = require('autoprefixer');
+
+const bourbon_paths = require('node-neat').includePaths
+const neat_paths = require('node-bourbon').includePaths
+const scssIncludePaths = bourbon_paths.concat(neat_paths);
+
+const postCSS = [ autoprefixer({ browsers: ["> 1%", "last 2 versions"] }) ];
 
 const extractSass = new ExtractTextPlugin({
     filename: "[name].[contenthash].css"
@@ -11,7 +18,7 @@ const extractSass = new ExtractTextPlugin({
 
 const cssloaders = [
     {
-        loader: 'css-loader',
+        loader: 'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
         options: {
             modules: true
         }
@@ -80,23 +87,20 @@ module.exports = {
             },
             {
                 test: /\.scss$/,
-                loader: ExtractTextPlugin.extract({
-                    fallback: "style-loader",
-                    use: [
-                        {
-                            loader: "style-loader"
-                        },
-                        {
-                            loader: "css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]"
-                        },
-                        {
-                            loader: "postcss-loader"
-                        },
-                        {
-                            loader: "sass-loader"
-                        }
-                    ]
-                })
+                use: [
+                    {
+                        loader: "style-loader"
+                    },
+                    {
+                        loader: "css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]"
+                    },
+                    {
+                        loader: "postcss-loader"
+                    },
+                    {
+                        loader: "sass-loader"
+                    }
+                ]
             }
         ]
     }
