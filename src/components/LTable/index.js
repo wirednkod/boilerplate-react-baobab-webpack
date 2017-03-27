@@ -51,9 +51,9 @@ class LTable extends Component {
                 continue;
             }
             for (let col in data[rows]) {
-                td.push(<div key={data[rows][col] + "_"+ i } className={styleName} style={{width:width +'%'}}>{data[rows][col]}</div>);
+                td.push(<div key={data[rows][col] + "_"+ i } styleName={styleName} style={{width:width +'%'}}>{data[rows][col]}</div>);
             }
-            tr.push(<div key={"row_"+ data[rows] + "_"+ i }className="row">{td}</div>);
+            tr.push(<div key={"row_"+ data[rows] + "_"+ i } styleName="row">{td}</div>);
             i++;
         }
 

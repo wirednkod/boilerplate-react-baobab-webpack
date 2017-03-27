@@ -54,7 +54,7 @@ const common_loaders = [
         loader: ExtractTextPlugin.extract({
             fallback: 'style-loader',
             use: [{
-                    loader: 'css-loader',
+                    loader: 'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
                     options: {
                         modules: true
                     }
@@ -65,7 +65,7 @@ const common_loaders = [
         test: /\.less$/,
         use: ExtractTextPlugin.extract({
             fallback: 'style-loader',
-            use: ['css-loader', 'less-loader']
+            use: ['css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]', 'less-loader']
         })
     }
 ];
