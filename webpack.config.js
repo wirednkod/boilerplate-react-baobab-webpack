@@ -12,11 +12,11 @@ const postCSS = [ autoprefixer({ browsers: ["> 1%", "last 2 versions"] }) ];
 const resolve_options = {
     extensions: ['.js'],
     alias: {
-        'components': path.join(__dirname,'src','components'),
-        'containers': path.join(__dirname,'src','containers'),
-        'consts': path.join(__dirname,'src','consts'),
-        'managers': path.join(__dirname,'src','managers'),
-        'common_actions': path.join(__dirname,'src','common_actions')
+        'components': path.join(__dirname,'client','components'),
+        'containers': path.join(__dirname,'client','containers'),
+        'consts': path.join(__dirname,'client','consts'),
+        'managers': path.join(__dirname,'client','managers'),
+        'common_actions': path.join(__dirname,'client','common_actions')
     }
 };
 
@@ -82,7 +82,7 @@ const config_client = {
     devtool: config.devtool,
     entry: [
         'webpack/hot/dev-server',
-        './src/index'
+        './client/index'
     ],
     output: {
         path: path.join(__dirname, 'public'),
@@ -113,7 +113,7 @@ const config_server = {
     devtool: config.devtool,
     entry: [
         'webpack/hot/poll',
-        './server.js'
+        './server/srv.js'
     ],
     output: {
         path: path.join(__dirname, "public"),
